@@ -1,0 +1,17 @@
+C:\WWW\dotnet_Tom\Service\bin\Debug\net5.0\Service.deps.json
+C:\WWW\dotnet_Tom\Service\bin\Debug\net5.0\Service.dll
+C:\WWW\dotnet_Tom\Service\bin\Debug\net5.0\ref\Service.dll
+C:\WWW\dotnet_Tom\Service\bin\Debug\net5.0\Service.pdb
+C:\WWW\dotnet_Tom\Service\obj\Debug\net5.0\Service.csprojAssemblyReference.cache
+C:\WWW\dotnet_Tom\Service\obj\Debug\net5.0\Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\WWW\dotnet_Tom\Service\obj\Debug\net5.0\Service.AssemblyInfoInputs.cache
+C:\WWW\dotnet_Tom\Service\obj\Debug\net5.0\Service.AssemblyInfo.cs
+C:\WWW\dotnet_Tom\Service\obj\Debug\net5.0\Service.csproj.CoreCompileInputs.cache
+C:\WWW\dotnet_Tom\Service\obj\Debug\net5.0\Service.dll
+C:\WWW\dotnet_Tom\Service\obj\Debug\net5.0\ref\Service.dll
+C:\WWW\dotnet_Tom\Service\obj\Debug\net5.0\Service.pdb
+C:\WWW\dotnet_Tom\Service\bin\Debug\net5.0\Model.dll
+C:\WWW\dotnet_Tom\Service\bin\Debug\net5.0\SE.Auth.dll
+C:\WWW\dotnet_Tom\Service\bin\Debug\net5.0\Model.pdb
+C:\WWW\dotnet_Tom\Service\bin\Debug\net5.0\SE.Auth.pdb
+C:\WWW\dotnet_Tom\Service\obj\Debug\net5.0\Service.csproj.CopyComplete
