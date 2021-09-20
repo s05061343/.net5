@@ -5720,34 +5720,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\s0506\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\WWW\\dotnet_Tom\\Service\\Service.csproj",
+      "projectUniqueName": "C:\\Users\\s0506\\Documents\\www\\Net5\\Service\\Service.csproj",
       "projectName": "Service",
-      "projectPath": "C:\\WWW\\dotnet_Tom\\Service\\Service.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\WWW\\dotnet_Tom\\Service\\obj\\",
+      "projectPath": "C:\\Users\\s0506\\Documents\\www\\Net5\\Service\\Service.csproj",
+      "packagesPath": "C:\\Users\\s0506\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\s0506\\Documents\\www\\Net5\\Service\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\s0506\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\WWW\\dotnet_Tom\\Model\\Model.csproj": {
-              "projectPath": "C:\\WWW\\dotnet_Tom\\Model\\Model.csproj"
+            "C:\\Users\\s0506\\Documents\\www\\Net5\\Model\\Model.csproj": {
+              "projectPath": "C:\\Users\\s0506\\Documents\\www\\Net5\\Model\\Model.csproj"
             }
           }
         }
@@ -5776,7 +5774,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.206\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

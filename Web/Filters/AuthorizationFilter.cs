@@ -18,7 +18,7 @@ namespace Web.Filters
             {
                 this._authManager = (context.HttpContext.RequestServices.GetService(typeof(IAuthManager))) as IAuthManager;
                 var token = this.ExtractToken(context.HttpContext, this.AuthTokenFrom = TokenFrom.All);
-                context.HttpContext.User = this.BuildPrincipal(token) as ClaimsPrincipal;
+                context.HttpContext.User = new ClaimsPrincipal(this.BuildPrincipal(token));
                 return;
             }
             catch (InvalidOperationException)

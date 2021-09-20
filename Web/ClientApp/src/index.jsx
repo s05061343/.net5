@@ -8,6 +8,11 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 import 'bootstrap/dist/css/bootstrap.css';
+//SE custom CSS
+import './css/style-se/css/s-color.css'
+import './css/style-se/css/s-style.css'
+import './css/style-se/css/s-layout.css'
+
 
 // Create browser history to use in the Redux store
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');

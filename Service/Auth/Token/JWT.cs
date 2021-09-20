@@ -45,7 +45,7 @@ namespace Service.Auth.Token
             string deviceName = "",
             string deviceID = "")
         {
-            //SE.Auth.User user;
+            //SE.Auth.User user2;
             var res = this._authMethod.ValidateToken(token, out user, x => x
                 .ValidAudience(deviceID)
                 .ValidIssuer(false)

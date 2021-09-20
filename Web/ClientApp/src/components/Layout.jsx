@@ -1,15 +1,14 @@
 import * as React from 'react';
-import { Container } from 'reactstrap';
-import NavMenu from './NavMenu';
+import NavMenu from './NavMenu.jsx';
 
 export default class Layout extends React.PureComponent {
     render() {
         return (
             <React.Fragment>
                 <NavMenu />
-                <Container>
+                <div className="s-content">
                     {this.props.children}
-                </Container>
+                </div>
             </React.Fragment>
         );
     }

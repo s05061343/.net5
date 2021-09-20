@@ -28,6 +28,7 @@ namespace Web.ServiceContainer
             services.AddScoped<IAuthManager, AuthManager<JWT>>();
             services.AddScoped<JWT>();
             services.AddScoped<AuthorizationFilter>();
+            services.AddScoped<ExceptionFilter>();
             services.AddScoped<DbContext, Model.SaintEir.SaintEirOp>();
         }
 

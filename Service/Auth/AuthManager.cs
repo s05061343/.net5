@@ -14,8 +14,8 @@ namespace Service.Auth
 
         public string Login(string userid, string username = "", string deviceName = "", string deviceID = "", string certificateId = "")
         {
-            var entity = this._tokenManager.Generate(userid, username, deviceName, deviceID, certificateId);
-            return entity;
+            var token = this._tokenManager.Generate(userid, username, deviceName, deviceID, certificateId);
+            return token;
         }
 
         public IIdentity ValidateToken(string token, string deviceName = "", string deviceID = "")

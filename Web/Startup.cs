@@ -8,6 +8,8 @@ using Microsoft.Extensions.Hosting;
 using Web.Filters;
 using Web.ServiceContainer;
 using Web.RouteConfig;
+using StackExchange.Profiling.Storage;
+using System;
 
 namespace WebUI
 {
@@ -35,6 +37,8 @@ namespace WebUI
             services.AddMvc(configuration =>
             {
                 configuration.Filters.Add(new AuthorizationFilter());
+                //ExceptionFilter
+                //configuration.Filters.Add(new ExceptionFilter());
                 //微軟在3.0之後，開啟Endpoint，MVC不會為AllowAnonymous自動添加AllowAnonymousFilter
                 configuration.EnableEndpointRouting = false;
             });
@@ -50,6 +54,35 @@ namespace WebUI
             /*add service */
             DependencyResolver.InitComponents(services);
 
+            // If using Kestrel:
+            //services.Configure<KestrelServerOptions>(options =>
+            //{
+            //    options.AllowSynchronousIO = true;
+            //});
+
+            // If using IIS:
+            services.Configure<IISServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
+
+            //MiniProfiler
+            services.AddMiniProfiler(options =>
+            {
+                options.RouteBasePath = "/profiler";
+                //資料快取時間
+                (options.Storage as MemoryCacheStorage).CacheDuration = TimeSpan.FromMinutes(60);
+                //sql格式化設定
+                options.SqlFormatter = new StackExchange.Profiling.SqlFormatters.InlineFormatter();
+                //跟蹤連線開啟關閉
+                options.TrackConnectionOpenClose = true;
+                //介面主題顏色方案;預設淺色
+                options.ColorScheme = StackExchange.Profiling.ColorScheme.Dark;
+                //.net core 3.0以上：對MVC過濾器進行分析
+                options.EnableMvcFilterProfiling = true;
+                //對檢視進行分析
+                options.EnableMvcViewProfiling = true;
+            }).AddEntityFramework();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,9 +102,12 @@ namespace WebUI
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
             app.UseRouting();
-            app.UseEndpoints(endpoints => 
-            { 
-                RouteConfig.Register(endpoints); 
+
+            app.UseMiniProfiler();
+
+            app.UseEndpoints(endpoints =>
+            {
+                RouteConfig.Register(endpoints);
             });
             app.UseSpa(spa =>
             {
@@ -82,6 +118,9 @@ namespace WebUI
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+
+            
+
             //微軟在3.0之後，開啟Endpoint，MVC不會為AllowAnonymous自動添加AllowAnonymousFilter
             app.UseMvc();
         }

@@ -1,13 +1,12 @@
 ﻿import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Home from '../components/Home/Home.jsx';
-import Logout from '../components/Login/Logout.jsx';
-import NotFound from '../components/NoMatch/NotFound.jsx';
 class AuthorizedRoute extends React.Component {
     render() {
         const { component: Component, pending, user, ...rest } = this.props
+
         const isAuth = sessionStorage.getItem("authToken");
+        
         if (isAuth && this.props.location.pathname === '/login') {
             return (
                 <Redirect to="/logout" />

@@ -4,13 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Service.Auth;
 using Web.ModelBinding.Auth;
-using Web.ModelBinding.Attributes;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Http;
 using Web.Request;
 using System.Linq;
 using SainteirAPI.Validations;
 using Web.Vaildations.Auth;
+using Web.ModelBinding.Attributes;
+using Microsoft.AspNetCore.Http;
 
 namespace Web.Controllers.Default
 {
@@ -29,18 +28,28 @@ namespace Web.Controllers.Default
         [HttpPost]
         public IActionResult Login(
             [FromServices] IAuthManager authService,
-            [ModelBinder(typeof(RequestBodyBinding))] string userId,
-            [ModelBinder(typeof(RequestBodyBinding))] string password,
-            [ModelBinder(typeof(RequestBodyBinding))] List<IFormFile> imageset)
+            [ModelBinder(typeof(RequestBodyBinding))] AuthLoginRequest request)
         {
-            var token = authService.Login(userId);
+            var token = authService.Login(request.userId);
             return this.Ok(new
             {
                 varsion = _version,
-                userId = userId,
-                password = password,
-                imageset = imageset,
+                userId = request.userId,
                 authToken = token
+            });
+        }
+
+        [HttpPost]
+        public IActionResult CookieLogin(
+            [FromServices] IAuthManager authService,
+            [FromServices] IHttpContextAccessor contextAccessor)
+        {
+            var user = contextAccessor.HttpContext.User;
+            var token = authService.Login(user.Identity.Name);
+            return this.Ok(new
+            {
+                identity = user.Identity,
+                token = token
             });
         }
 

@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <Reference Include="SE.Auth">
-      <HintPath>..\..\SEOS_dotnet5\Service\bin\Debug\SE.Auth.dll</HintPath>
+      <HintPath>..\..\Net5\Service\bin\SE.Auth.dll</HintPath>
     </Reference>
   </ItemGroup>
 
