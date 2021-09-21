@@ -1,9 +1,9 @@
 ﻿import React from 'react'
 import { BrowserRouter, Switch } from 'react-router-dom'
 import { Redirect, Route } from 'react-router-dom'
-/*import AuthorizedRoute from './store/AuthorizedRoute.js'*/
+import AuthorizedRoute from './store/AuthorizedRoute.js'
 import ReactNotification from 'react-notifications-component'
-import AuthorizedRouteCookie from './store/AuthorizedRouteCookie.js'
+/*import AuthorizedRouteCookie from './store/AuthorizedRouteCookie.js'*/
 /*import { HashRouter } from "react-router-dom";*/
 
 // Layouts
@@ -23,11 +23,11 @@ export default () => (
             <ReactNotification />
             <Layout>
                 <Switch>
-                    <AuthorizedRouteCookie exact path="/home" component={Home} />
-                    <AuthorizedRouteCookie path="/login" component={Login} />
-                    <AuthorizedRouteCookie path="/logout" component={Logout} />
+                    <AuthorizedRoute exact path="/home" component={Home} />
+                    <AuthorizedRoute path="/login" component={Login} />
+                    <AuthorizedRoute path="/logout" component={Logout} />
                     <Route path="/not_found" component={NotFound} />
-                    <AuthorizedRouteCookie path="/unauthorized" component={Unauthorized} />
+                    <AuthorizedRoute path="/unauthorized" component={Unauthorized} />
                     <Redirect to="/home" />
                 </Switch>
             </Layout>

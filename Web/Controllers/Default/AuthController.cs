@@ -59,7 +59,7 @@ namespace Web.Controllers.Default
             [ValidateRequest(Validator = typeof(IAuthRequestValidator))]
             [ModelBinder(typeof(AuthQuseryBinder))] AuthLoginRequest request)
         {
-            var vo = dbContext.Set<Model.SaintEir.PRO2E_AUTH_LOGIN_USER>().Find(request.userId);
+            var vo = dbContext.Set<Model.HeroKuPostgreSQL.TomzContext>().Find(request.userId);
             return this.Ok(new
             {
                 varsion = _version,

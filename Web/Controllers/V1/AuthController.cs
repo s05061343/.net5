@@ -47,7 +47,7 @@ namespace Web.Controllers.V1
             [FromServices] DbContext dbContext,
             [ModelBinder(typeof(AuthQuseryBinder))] AuthLoginRequest request)
         {
-            var vo = dbContext.Set<Model.SaintEir.PRO2E_AUTH_LOGIN_USER>().Find(request.userId);
+            var vo = dbContext.Set<Model.HeroKuPostgreSQL.PRO2E_AUTH_LOGIN_USER>().Find(request.userId);
             return this.Ok(new
             {
                 varsion = _version,

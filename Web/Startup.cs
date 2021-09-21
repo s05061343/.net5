@@ -46,8 +46,7 @@ namespace WebUI
 
 
             /*add database */
-            //services.AddDbContext<Model.SaintEir.SaintEirOp>(x => x.UseSqlServer("name=ConnectionStrings:SaintEirOp"));
-            services.AddDbContext<Model.SaintEir_pg.df44n37s7pehcoContext>(x => x.UseSqlServer("name=ConnectionStrings:SaintEirOp_pg"));
+            services.AddDbContext<Model.HeroKuPostgreSQL.TomzContext>(x => x.UseNpgsql("name=ConnectionStrings:Tomz"));
             /*add httpcontext current */
             services.AddHttpContextAccessor();
 

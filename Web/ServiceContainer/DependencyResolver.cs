@@ -20,7 +20,7 @@ namespace Web.ServiceContainer
 
         private static void InitDbContext(IServiceCollection services)
         {
-            services.AddScoped<DbContext, Model.SaintEir.SaintEirOp>();
+            services.AddScoped<DbContext, Model.HeroKuPostgreSQL.TomzContext>();
         }
 
         private static void InitService(IServiceCollection services)
@@ -29,7 +29,6 @@ namespace Web.ServiceContainer
             services.AddScoped<JWT>();
             services.AddScoped<AuthorizationFilter>();
             services.AddScoped<ExceptionFilter>();
-            services.AddScoped<DbContext, Model.SaintEir.SaintEirOp>();
         }
 
         private static void InitValidator(IServiceCollection services)
