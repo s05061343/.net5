@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <Reference Include="SE.Auth">
-      <HintPath>..\..\Net5\Service\bin\SE.Auth.dll</HintPath>
+      <HintPath>bin\SE.Auth.dll</HintPath>
     </Reference>
   </ItemGroup>
 
