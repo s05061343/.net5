@@ -4,7 +4,20 @@
     /*background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);*/
     /*background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
     background-blend-mode: multiply,multiply;*/
-    background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+    /*background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);*/
+    /*background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;*/
+    /*background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);*/
+    /*background-image: linear-gradient(-60deg, #ff5858 0%, #f09819 100%);*/
+    /*background-image: linear-gradient(-20deg, #6e45e2 0%, #88d3ce 100%);*/
+    /*background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);*/
+    /*background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);*/
+    /*background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%);*/
+    /*background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);*/
+    /*background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);*/
+    /*background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);*/
+    /*background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);*/
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-blend-mode: multiply,multiply;
 }
 
 @media (max-width: 991.98px) {
@@ -20,7 +33,9 @@
         visibility: hidden;
         /*background-color: #343a40;*/
         /*background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);*/
-        background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+        /*background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);*/
+        /*background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);*/
+        background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
     }
 
@@ -87,5 +102,3 @@
         font-size: 3.5rem;
     }
 }
-
-
