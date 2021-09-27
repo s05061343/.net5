@@ -1,39 +1,38 @@
 ﻿import * as React from 'react';
 import { connect } from 'react-redux';
 import * as store from '../Login/Login.js';
-import LoadingOverlay from 'react-loading-overlay';
 
-import '../../css/style-se/css/s-signin.css';
+import '../../css/signin.css';
 
 class Login extends React.PureComponent {
     render() {
         return (
             <React.Fragment>
-                <LoadingOverlay
-                    active={this.props.loginUser}
-                    spinner
-                    text='Loading your content...'
-                >
                 <div className="text-center">
                     <main className="form-signin">
                         <form>
-                            <div className="s-logo"></div>
-                            <h1 className="s-title">SEOS醫美管理系統</h1>
+                            <img className="mb-4" src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57" />
+                            <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
                             <div className="form-floating">
-                                <input type="text" className="form-control" id="floatingInput" placeholder="ID"
+                                <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com"
                                     onChange={(e) => { this.props.setUserId(e.target.value); }} />
-                                <label htmlFor="floatingInput" >帳號</label>
+                                <label htmlFor="floatingInput">Email address</label>
                             </div>
                             <div className="form-floating">
                                 <input type="password" className="form-control" id="floatingPassword" placeholder="Password"
                                     onChange={(e) => { this.props.setPassword(e.target.value); }} />
-                                <label htmlFor="floatingPassword" >密碼</label>
+                                <label htmlFor="floatingPassword">Password</label>
                             </div>
-                            <button type="button" className="w-100 btn btn-lg s-btn-primary" onClick={() => { this.props.post(); }}>登入</button>
+                            <div className="checkbox mb-3">
+                                <label>
+                                    <input type="checkbox" value="remember-me" /> Remember me
+                                </label>
+                            </div>
+                            <button className="w-100 btn btn-lg btn-primary" type="button" onClick={() => { this.props.post(); }}>Sign in</button>
+                            <p className="mt-5 mb-3 text-muted">© 2017–2021</p>
                         </form>
                     </main>
-                    </div>
-                </LoadingOverlay>
+                </div>
             </React.Fragment>
         );
     }

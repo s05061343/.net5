@@ -17,3 +17,8 @@ export async function getApiUserLoginCheck() {
         sessionStorage.removeItem("authToken");
     }
 }
+
+const shortenRequest = axios.create({
+    baseURL: 'https://tomz-shorten-url.herokuapp.com',
+});
+export const apiShortenUrl = data => shortenRequest.post('/urlshortemer/default/shorten', data);
