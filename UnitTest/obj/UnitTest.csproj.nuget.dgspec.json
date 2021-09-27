@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\s0506\\Documents\\www\\.net5\\UnitTest\\UnitTest.csproj": {}
+    "C:\\WWW\\GitHub\\.net5\\UnitTest\\UnitTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\s0506\\Documents\\www\\.net5\\UnitTest\\UnitTest.csproj": {
+    "C:\\WWW\\GitHub\\.net5\\UnitTest\\UnitTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\s0506\\Documents\\www\\.net5\\UnitTest\\UnitTest.csproj",
+        "projectUniqueName": "C:\\WWW\\GitHub\\.net5\\UnitTest\\UnitTest.csproj",
         "projectName": "UnitTest",
-        "projectPath": "C:\\Users\\s0506\\Documents\\www\\.net5\\UnitTest\\UnitTest.csproj",
-        "packagesPath": "C:\\Users\\s0506\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\s0506\\Documents\\www\\.net5\\UnitTest\\obj\\",
+        "projectPath": "C:\\WWW\\GitHub\\.net5\\UnitTest\\UnitTest.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\WWW\\GitHub\\.net5\\UnitTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\s0506\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -68,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.207\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,6 +1,10 @@
 ﻿.bg-custom {
     --bs-bg-opacity: 1;
-    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    /*background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);*/
+    /*background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);*/
+    /*background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+    background-blend-mode: multiply,multiply;*/
+    background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
 }
 
 @media (max-width: 991.98px) {

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\s0506\\Documents\\www\\.net5\\Service\\Service.csproj": {}
+    "C:\\WWW\\GitHub\\.net5\\Service\\Service.csproj": {}
   },
   "projects": {
-    "C:\\Users\\s0506\\Documents\\www\\.net5\\Model\\Model.csproj": {
+    "C:\\WWW\\GitHub\\.net5\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\s0506\\Documents\\www\\.net5\\Model\\Model.csproj",
+        "projectUniqueName": "C:\\WWW\\GitHub\\.net5\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "C:\\Users\\s0506\\Documents\\www\\.net5\\Model\\Model.csproj",
-        "packagesPath": "C:\\Users\\s0506\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\s0506\\Documents\\www\\.net5\\Model\\obj\\",
+        "projectPath": "C:\\WWW\\GitHub\\.net5\\Model\\Model.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\WWW\\GitHub\\.net5\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\s0506\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -84,21 +84,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.207\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\s0506\\Documents\\www\\.net5\\Service\\Service.csproj": {
+    "C:\\WWW\\GitHub\\.net5\\Service\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\s0506\\Documents\\www\\.net5\\Service\\Service.csproj",
+        "projectUniqueName": "C:\\WWW\\GitHub\\.net5\\Service\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "C:\\Users\\s0506\\Documents\\www\\.net5\\Service\\Service.csproj",
-        "packagesPath": "C:\\Users\\s0506\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\s0506\\Documents\\www\\.net5\\Service\\obj\\",
+        "projectPath": "C:\\WWW\\GitHub\\.net5\\Service\\Service.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\WWW\\GitHub\\.net5\\Service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\s0506\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -112,8 +112,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\s0506\\Documents\\www\\.net5\\Model\\Model.csproj": {
-                "projectPath": "C:\\Users\\s0506\\Documents\\www\\.net5\\Model\\Model.csproj"
+              "C:\\WWW\\GitHub\\.net5\\Model\\Model.csproj": {
+                "projectPath": "C:\\WWW\\GitHub\\.net5\\Model\\Model.csproj"
               }
             }
           }
@@ -142,7 +142,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.207\\RuntimeIdentifierGraph.json"
         }
       }
     }

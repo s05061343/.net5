@@ -11,7 +11,7 @@ class ShortenUrl extends React.PureComponent {
                 <div className="text-center">
                     <main className="form-signin">
                         <form>
-                            <img className="mb-4" src="/logo_transparent.png" alt="" width="240" height="240"/>
+                            <img className="mb-4" src="/logo_transparent.png" alt="" width="50%" height="50%"/>
                             <h1 className="h3 mb-3 fw-normal">縮網址</h1>
                             <div className="form-floating">
                                 <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com"
