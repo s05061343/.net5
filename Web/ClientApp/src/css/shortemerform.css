@@ -3,16 +3,16 @@
 }
 
 .form-signin {
-    padding-top: 50%;
+    padding-top: 30%;
 }
 
 @media (min-width: 768px) {
     .form-signin {
         width: 100%;
-        max-width: 70%;
+        max-width: 80%;
         padding: 15px;
         margin: auto;
-        padding-top: 20%;
+        padding-top: 15%;
     }
 }
 
@@ -39,6 +39,24 @@
 .notification__item--warning {
     /*background-color: #eab000;
     border-left: 8px solid #ce9c09;*/
+    /*background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
+    background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
+    border: none !important;
+}
+
+.notification__item--success {
+    /*background-color: #eab000;
+    border-left: 8px solid #ce9c09;*/
     background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border: none !important;
+}
+
+.css-50etie {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /*padding: 0px 15px 0px 15px;*/
+    border-radius: 30px;
+    position: relative;
+    margin: 0px auto 10px auto;
+    width: 50px;
+    max-height: 100%;
 }

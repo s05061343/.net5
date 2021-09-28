@@ -5,6 +5,13 @@ export const actionCreators = {
     post: () => (dispatch, getState) => {
         const appState = getState();
 
+        dispatch({
+            type: "POST",
+            value: {
+                isActive: true
+            }
+        });
+
         const json = { url: appState.shortemer.value.originalUrl }
 
         apiShortenUrl(json)
@@ -12,9 +19,18 @@ export const actionCreators = {
                 console.log(res);
                 const data = JSON.parse(res.request.response);
                 console.log(data);
+                dispatch({
+                    type: "POST",
+                    value: {
+                        originalUrl: '',
+                        translationUrl: '',
+                        isActive: true
+                    }
+                });
                 if (res.status === 200) {
                     store.addNotification({
-                        message: "縮網址完成",
+                        title: "縮網址完成",
+                        message: "連結以產生，感謝使用! " + data.data,
                         type: "success",
                         insert: "top",
                         container: "top-right",
@@ -29,15 +45,22 @@ export const actionCreators = {
                         type: "POST",
                         value: {
                             originalUrl: appState.shortemer.value.originalUrl,
-                            translationUrl: data.data
+                            translationUrl: data.data,
+                            isActive: false
                         }
                     });
                 }
             })
             .catch(err => {
+                dispatch({
+                    type: "POST",
+                    value: {
+                        isActive: false
+                    }
+                });
                 store.addNotification({
-                    title: "產生失敗",
-                    message: "縮網址產生失敗，請再試一次。",
+                    title: "縮網址產生失敗",
+                    message: "縮網址產生失敗，請再試一次，如重複發生，請聯絡管理員。",
                     type: "warning",
                     insert: "top",
                     container: "top-right",
@@ -57,7 +80,8 @@ export const actionCreators = {
             type: "SET_URL",
             value: {
                 originalUrl: originalUrl,
-                translationUrl: ''
+                translationUrl: '',
+                isActive: false
             }
         });
     },
@@ -68,7 +92,8 @@ export const reducer = (shortemer, incomingAction) => {
         return {
             value: {
                 originalUrl: '',
-                translationUrl: ''
+                translationUrl: '',
+                isActive: false
             }
         };
     }
