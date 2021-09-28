@@ -10,6 +10,7 @@ using Web.ServiceContainer;
 using Web.RouteConfig;
 using StackExchange.Profiling.Storage;
 using System;
+using Schedule;
 
 namespace WebUI
 {
@@ -82,6 +83,8 @@ namespace WebUI
             //    //對檢視進行分析
             //    options.EnableMvcViewProfiling = true;
             //}).AddEntityFramework();
+
+            services.AddHostedService(provider => provider.GetService<QuartzHostedService>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
