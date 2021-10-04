@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Quartz;
 using Quartz.Spi;
+using Schedule.Jobs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,57 +14,57 @@ namespace Schedule
 {
     public class QuartzHostedService : IHostedService
     {
-
         private readonly ISchedulerFactory _schedulerFactory;
         private readonly IJobFactory _jobFactory;
         private readonly ILogger<QuartzHostedService> _logger;
-        private readonly IEnumerable<JobSchedule> _injectJobSchedules;
-        private List<JobSchedule> _allJobSchedules;
+        private readonly IEnumerable<JobMetadata> _injectJobSchedules;
+        public List<JobMetadata> _allJobSchedules;
         public IScheduler Scheduler { get; set; }
         public CancellationToken CancellationToken { get; private set; }
 
-        public QuartzHostedService(ILogger<QuartzHostedService> logger, ISchedulerFactory schedulerFactory, IJobFactory jobFactory, IEnumerable<JobSchedule> jobSchedules)
+        public QuartzHostedService(
+            ILogger<QuartzHostedService> logger, 
+            ISchedulerFactory schedulerFactory, 
+            IJobFactory jobFactory, 
+            IEnumerable<JobMetadata> jobSchedules)
         {
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _schedulerFactory = schedulerFactory ?? throw new ArgumentNullException(nameof(schedulerFactory));
-            _jobFactory = jobFactory ?? throw new ArgumentNullException(nameof(jobFactory));
-            _injectJobSchedules = jobSchedules ?? throw new ArgumentNullException(nameof(jobSchedules));
+            _logger = logger;
+            _schedulerFactory = schedulerFactory;
+            _jobFactory = jobFactory;
+            _injectJobSchedules = jobSchedules;
+            _allJobSchedules = new List<JobMetadata>();
         }
 
-        /// <summary>
-        /// 啟動排程器
-        /// </summary>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            if (Scheduler == null || Scheduler.IsShutdown)
+            try
             {
-                // 存下 cancellation token 
-                CancellationToken = cancellationToken;
-
-                // 先加入在 startup 註冊注入的 Job 工作
-                _allJobSchedules = new List<JobSchedule>();
-                _allJobSchedules.AddRange(_injectJobSchedules);
-
-                // 再模擬動態加入新 Job 項目 (e.g. 從 DB 來的，針對不同報表能動態決定產出時機)
-                _allJobSchedules.Add(new JobSchedule(jobName: "111", jobType: typeof(ReportJob), cronExpression: "0/30 * * * * ?"));
-
-                // 初始排程器 Scheduler
-                Scheduler = await _schedulerFactory.GetScheduler(cancellationToken);
-                Scheduler.JobFactory = _jobFactory;
-
-                // 逐一將工作項目加入排程器中 
-                foreach (var jobSchedule in _allJobSchedules)
+                if (Scheduler == null || Scheduler.IsShutdown)
                 {
-                    var jobDetail = CreateJobDetail(jobSchedule);
-                    var trigger = CreateTrigger(jobSchedule);
-                    await Scheduler.ScheduleJob(jobDetail, trigger, cancellationToken);
-                    jobSchedule.JobStatus = JobStatus.Scheduled;
-                }
+                    CancellationToken = cancellationToken;
+                    _allJobSchedules.AddRange(_injectJobSchedules);
+                    // 初始排程器 Scheduler
+                    Scheduler = await _schedulerFactory.GetScheduler(cancellationToken);
+                    Scheduler.JobFactory = _jobFactory;
+                    // 逐一將工作項目加入排程器中
+                    _allJobSchedules.ForEach(async jobSchedule =>
+                    {
+                        await Scheduler.ScheduleJob(
+                            jobSchedule.CreateDetail(),
+                            jobSchedule.CreateTrigger(),
+                            cancellationToken);
+                        jobSchedule.JobStatus = JobStatus.Scheduled;
+                    });
 
-                // 啟動排程
-                await Scheduler.Start(cancellationToken);
+                    // 啟動排程
+                    await Scheduler.Start(cancellationToken);
+                }
+            }
+            catch (Exception ex)
+            {
+                var jex = new JobExecutionException(ex);
+                jex.RefireImmediately = true;
+                _logger.LogError($"@{jex}");
             }
         }
 
@@ -83,7 +84,7 @@ namespace Schedule
         /// <summary>
         /// 取得所有作業的最新狀態
         /// </summary>
-        public async Task<IEnumerable<JobSchedule>> GetJobSchedules()
+        public async Task<IEnumerable<JobMetadata>> GetJobSchedules()
         {
             if (Scheduler.IsShutdown)
             {
@@ -102,7 +103,6 @@ namespace Schedule
                     var isRunning = executingJobs.FirstOrDefault(j => j.JobDetail.Key.Name == jobSchedule.JobName) != null;
                     jobSchedule.JobStatus = isRunning ? JobStatus.Running : JobStatus.Scheduled;
                 }
-
             }
 
             return _allJobSchedules;
@@ -133,7 +133,6 @@ namespace Schedule
                     _logger.LogInformation($"@{DateTime.Now:HH:mm:ss} - job{jobName} - InterruptJobAsync");
                     await Scheduler.Interrupt(new JobKey(jobName));
                 }
-
             }
         }
 
@@ -149,39 +148,6 @@ namespace Schedule
             }
 
             return null;
-        }
-
-        /// <summary>
-        /// 建立作業細節 (後續會透過 JobFactory 依此資訊從 DI 容器取出 Job 實體)
-        /// </summary>
-        private IJobDetail CreateJobDetail(JobSchedule jobSchedule)
-        {
-            var jobType = jobSchedule.JobType;
-            var jobDetail = JobBuilder
-                .Create(jobType)
-                .WithIdentity(jobSchedule.JobName)
-                .WithDescription(jobType.Name)
-                .Build();
-
-            // 可以在建立 job 時傳入資料給 job 使用
-            jobDetail.JobDataMap.Put("Payload", jobSchedule);
-
-            return jobDetail;
-        }
-
-        /// <summary>
-        /// 產生觸發器
-        /// </summary>
-        /// <param name="schedule"></param>
-        /// <returns></returns>
-        private ITrigger CreateTrigger(JobSchedule schedule)
-        {
-            return TriggerBuilder
-                .Create()
-                .WithIdentity($"{schedule.JobName}.trigger")
-                .WithCronSchedule(schedule.CronExpression)
-                .WithDescription(schedule.CronExpression)
-                .Build();
         }
     }
 }
